@@ -65,7 +65,7 @@ container: .container-$(ARCH)
 	cp -r * $(TEMP_DIR)
 	cd $(TEMP_DIR) && sed -i 's|BASEIMAGE|$(BASEIMAGE)|g' Dockerfile
 
-	docker run --rm -it -v $(TEMP_DIR):$(TEMP_DIR):Z -v `pwd`:/go/src/k8s.io/autoscaler/addon-resizer/:Z \
+	docker run --rm -v $(TEMP_DIR):$(TEMP_DIR):Z -v `pwd`:/go/src/k8s.io/autoscaler/addon-resizer/:Z \
         ${GOLANG_IMAGE} \
         /bin/bash -c "\
 		go get github.com/tools/godep && \
